@@ -4,7 +4,7 @@ import { MainContextState } from "../context/MainContextProvider";
 import Button from 'react-bootstrap/Button';
 import { getAuth, signInWithPopup } from "firebase/auth";
 import { GoogleAuthProvider } from "firebase/auth";
-import { appFirebase } from "@/firebase/initConfigNew";
+import { appFirebase } from "@/firebase/initConfig";
 
 const SocialLogin = () => {
   const { state, dispatch } = useContext(MainContextState);
@@ -18,8 +18,8 @@ const SocialLogin = () => {
         const user = credentials.user;
         console.log("El usuario es ", user);
         dispatch({ type: "LOGIN" });
-        dispatch({ type: "SETUSERNAME", username: user.displayName });  
-        router.push('/home') 
+        dispatch({ type: "SETUSERNAME", username: user.displayName });
+        router.push('/home')
       })
       .catch((error) => {
         const errorCode = error.code;
