@@ -126,6 +126,7 @@ main img {
   gap: 30px;
   flex-wrap: wrap;
   background-color: black;
+  justify-content: center;
 }
 
 .card-body {
@@ -136,6 +137,33 @@ main img {
 .card-body h2 {
   text-align: center;
   color: white;
+}
+
+.visual-card :hover{
+  transform: scale(1.2);
+  cursor: pointer;
+  transition: transform 1.5s;
+  overflow: hidden;
+}
+
+.visual-card :hover .botones-card{
+display: block;
+}
+.visual-card :hover * {
+  transform: none;
+}
+
+.botones-card{
+  display: none;
+  z-index: 99;
+  background: #181818;
+  color: #fff;
+  width: 100%;
+  height: fit-content;
+  padding: 5px;
+  box-sizing: border-box;
+  transition: opacity 300ms ease-out, border-radius 200ms ease-out;
+  border-radius: 0 0 10px 10px;
 }
 
 
