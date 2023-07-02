@@ -69,7 +69,6 @@ export default function SearchBar(props ) {
       value={searchValue}
      // onChange = {handlerOnChance}
       onChange={(e) => setSearchValue(e.target.value)}
-
     />
 
     {/* <Button variant="outline-secondary">Search</Button> */}

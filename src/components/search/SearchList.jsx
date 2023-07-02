@@ -1,5 +1,7 @@
 import React from 'react'
 import VisualCard from "../VisualCard";
+import {imagen} from '../../../public/noDisponible.png'
+
 
 export const SearchList = ( {movies}) => {
 
@@ -13,7 +15,7 @@ export const SearchList = ( {movies}) => {
 
           // <div className="card-body text-white text-center p-4" key={movie.id}>
           //   <h6 className='text-white text-break'>{movie.title}</h6>
-          //   <img src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
+          //   <img src={movie.poster_path !==null ? `https://image.tmdb.org/t/p/w300${movie.poster_path}`: './noDisponible.png'}
           //       alt={movie.title}
           //       className="card-img-top poster__movie"/>
           // </div>

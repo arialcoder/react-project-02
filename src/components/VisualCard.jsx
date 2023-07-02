@@ -12,7 +12,7 @@ const VisualCard = (params) => {
                 {params.original_name}
             </h5>
             <img
-                src={API_IMG + params.poster_path}
+                src={ params.poster_path !==null ? API_IMG + params.poster_path : './noDisponible.png'}
                 className="card-img-top poster__movie"
                 alt="Poster de serie o pelicula"
             />

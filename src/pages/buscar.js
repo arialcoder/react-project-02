@@ -42,7 +42,6 @@ export default function Buscar() {
     e.preventDefault()
     if( searchValue.trim().length > 2){
       getMovieByName(searchValue)
-
     }
   }
 
