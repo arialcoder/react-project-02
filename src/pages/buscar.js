@@ -1,47 +1,23 @@
 
 import { useState, useEffect } from 'react'
 import { SearchList } from '@/components/search/SearchList'
+import {getMovieByName} from '../components/search/getMovieByName'
 
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import "bootstrap/dist/css/bootstrap.min.css";
+
 
 export default function Buscar() {
 
   const [searchValue, setSearchValue] = useState('');
   const [movies, setMovies] = useState( []);
 
-
-  const getMovieByName = async (searchValue) => {
-    const API_KEY = '5cfb6e84540e60dcfb925c8dbfcd1aca'
-    const url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${searchValue}`
-
-    try {
-      const response = await fetch(url)
-      const data = await response.json()
-
-      // console.log(data.results);
-
-      if (data.results) {
-
-        setMovies(data.results)
-        //const moviesFilter = movies.filter(()=>)
-        return { movies: data }
-      }
-    } catch (error) {
-      throw new Error('error searching movies')
-    }
-  }
-
-  // const handlerClick = (e) => {
-  //   e.preventDefault
-  //   // setSearchValue(e.target.value)
-  //   getMovieByName(searchValue)
-  // }
   const handlerSubmit = async (e) => {
     e.preventDefault()
     if( searchValue.trim().length > 2){
       getMovieByName(searchValue)
+        .then( movies => setMovies(movies))
     }
   }
 
