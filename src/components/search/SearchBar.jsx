@@ -1,5 +1,6 @@
 
 
+import { useRouter } from 'next/router'
 import { useState, useEffect } from "react";
 import {getMovieByName} from './getMovieByName'
 
@@ -10,7 +11,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { SearchList } from './SearchList';
 
 
-import { useRouter } from 'next/router'
 
 export default function SearchBar(props) {
 
@@ -26,14 +26,17 @@ export default function SearchBar(props) {
         // getMovieByName(searchValue)
         //   .then( movies => setMovies(movies))
         //   console.log(movies)
-        router.push( "/buscar")
+        router.push({pathname: '/buscar',
+                  query:  {searchValue} }
+              )
+       
     }
 
   return (
     <>
-    <Form className="d-flex" onSubmit={handlerSubmit} >
+    <form className="d-flex" onSubmit={(e)=>handlerSubmit(e)} >
     <Form.Control
-      type="search"
+      type="text"
       placeholder="Search"
       className="me-2"
       aria-label="Search"
@@ -43,7 +46,7 @@ export default function SearchBar(props) {
     />
 
     {/* <Button variant="outline-secondary">Search</Button> */}
-    </Form>
+    </form>
     </>
   )
 }

@@ -1,16 +1,17 @@
 
+import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react'
 
 import { SearchList } from '@/components/search/SearchList'
-import {getMovieByName} from '../components/search/getMovieByName'
+import { getMovieByName } from '../components/search/getMovieByName'
 import VisualCard from "../components/VisualCard";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
-
 export default function Buscar(props) {
-
-  const { searchValue } = props
+  const router=useRouter()
+  //console.log(router.query.searchValue);
+  const  searchValue  = router.query.searchValue
 
 
   const [movies, setMovies] = useState( []);
