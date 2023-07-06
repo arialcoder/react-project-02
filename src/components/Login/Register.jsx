@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { MainContextState } from "../context/MainContextProvider";
 import { useRouter } from 'next/router'
-import { appFirebase } from "../../firebase/initConfigNew"
+import { appFirebase } from "../../firebase/initConfig"
 import { getAuth,  createUserWithEmailAndPassword, updateProfile } from "firebase/auth"
 import { Container } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
@@ -10,7 +10,7 @@ import Alert from 'react-bootstrap/Alert';
 
 
 const Register = () => {
- 
+
   const { state, dispatch } = useContext(MainContextState);
   const [showMessage, setShowMessage] = useState(false);
   const [message, setMessage] = useState({});
@@ -18,7 +18,7 @@ const Register = () => {
 
 const handleSubmit = (e) => {
     e.preventDefault()
-    const form = e.currentTarget;      
+    const form = e.currentTarget;
     const email= form.emailRegister.value
     const nombre= form.nombre.value
     const pass= form.passRegister.value
@@ -57,9 +57,9 @@ const handleSubmit = (e) => {
 
   function registerUser(email, nombre, password) {
     //console.log("Estoy invocando la funcion submit...")
-    
+
     const auth = getAuth(appFirebase);
-    
+
     createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Signed in
@@ -69,7 +69,7 @@ const handleSubmit = (e) => {
     .then(()=>{
        updateProfile(  auth.currentUser,{
           displayName: nombre
-            }).then(() => {              
+            }).then(() => {
               console.log("nombre actualizado")
               // ...
             }).catch((error) => {
@@ -82,7 +82,7 @@ const handleSubmit = (e) => {
         dispatch({ type: "SETUSERNAME", username: nombre });
       })
       .then(()=>router.push('/home'))
-      
+
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
@@ -93,7 +93,7 @@ const handleSubmit = (e) => {
       }
     });
 }
-  
+
   if (state.isLoggedIn) {
     return (
       <>
@@ -110,7 +110,7 @@ const handleSubmit = (e) => {
         <img src="./Netflix.png" alt="Imagen Titulo de Netflix" />
       </div>
       <Container className="col-5 py-2 container__login rounded border border-danger">
-      { 
+      {
       showMessage &&
         <Alert variant="danger" onClose={() => setShowMessage(false)} dismissible>
         <Alert.Heading>Error</Alert.Heading>
@@ -141,7 +141,7 @@ const handleSubmit = (e) => {
               name="nombre"
               id="nombre"
               placeholder="ingresa tu nombre"
-              
+
             />
           </Form.Group>
 
@@ -153,7 +153,7 @@ const handleSubmit = (e) => {
               name="passRegister"
               id="passRegister"
               placeholder="Contraseña"
-              
+
             />
           </Form.Group>
           <Form.Group>
@@ -164,7 +164,7 @@ const handleSubmit = (e) => {
               name="passRegister2"
               id="passRegister2"
               placeholder="Repite tu contraseña"
-              
+
             />
           </Form.Group>
 
@@ -172,8 +172,8 @@ const handleSubmit = (e) => {
             <Button
               className="container w-50 rojo text-white"
               variant=""
-              type="submit"              
-             
+              type="submit"
+
             >
               Registrame
             </Button>

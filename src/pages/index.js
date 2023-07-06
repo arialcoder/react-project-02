@@ -16,8 +16,8 @@ export default function Home() {
         <meta name="description" content="Sitio Clon de Netflix" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="shortcut icon" href="/favicon-Netflix.ico"></link>
-      </Head>    
-        <Login />      
+      </Head>
+        {/* <Login />       */}
     </>
   );
 }

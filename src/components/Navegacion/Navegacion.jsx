@@ -8,11 +8,12 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 
 
 const Navegacion = () => {
- 
+
   const { state } = useContext(MainContextState);
- 
+
   return (
-    state?.isLoggedIn ? <FullNavBar /> : <SimpleNavBar />
+    // state?.isLoggedIn ? <FullNavBar /> : <SimpleNavBar />
+    <FullNavBar />
   )
 };
 
