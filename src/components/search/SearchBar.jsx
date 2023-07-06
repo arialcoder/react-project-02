@@ -15,7 +15,7 @@ import { useRouter } from 'next/router'
 export default function SearchBar(props) {
 
   const [searchValue, setSearchValue] = useState('');
-  const [movies, setMovies] = useState( []);
+  const [movies, setMovies] = useState([]);
   const router = useRouter()
 
 
@@ -26,7 +26,7 @@ export default function SearchBar(props) {
         // getMovieByName(searchValue)
         //   .then( movies => setMovies(movies))
         //   console.log(movies)
-        router.push( "/buscar")
+        router.push("/buscar")
     }
 
   return (

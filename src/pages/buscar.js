@@ -13,7 +13,7 @@ export default function Buscar(props) {
   const { searchValue } = props
 
 
-  const [movies, setMovies] = useState( []);
+  const [movies, setMovies] = useState([]);
 
 useEffect(() => {
   getMovieByName(searchValue)
