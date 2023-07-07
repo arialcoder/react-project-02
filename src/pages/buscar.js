@@ -13,7 +13,6 @@ export default function Buscar(props) {
   //console.log(router.query.searchValue);
   const  searchValue  = router.query.searchValue
 
-
   const [movies, setMovies] = useState( []);
 
 useEffect(() => {
@@ -21,15 +20,15 @@ useEffect(() => {
   .then( movies => setMovies(movies))
   console.log(movies)
 },
-[]);
+[searchValue]);
 
   return (
     <>
       <h1 className='m-0 p-2 text-center text-white bg-dark'>Buscar película por nombre</h1>
       <main className='container-fluid  movies__container justify-center'>
         <SearchList movies={movies} />
-        {
-        movies?.map(movie => (
+
+        {/* { movies?.map(movie => (
           <VisualCard key={movie.id} {...movie}></VisualCard>
 
           // <div className="card-body text-white text-center p-4" key={movie.id}>
@@ -39,7 +38,7 @@ useEffect(() => {
           //       className="card-img-top poster__movie"/>
           // </div>
         ))
-      }
+      } */}
       </main>
     </>
   )

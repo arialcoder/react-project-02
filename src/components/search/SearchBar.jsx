@@ -19,17 +19,12 @@ export default function SearchBar(props) {
   const router = useRouter()
 
 
-
-    const handlerSubmit = async (e) => {
-      e.preventDefault()
-      // router.push( `buscar/?search=${searchValue}`)
-        // getMovieByName(searchValue)
-        //   .then( movies => setMovies(movies))
-        //   console.log(movies)
-        router.push({pathname: '/buscar',
-                  query:  {searchValue} }
+  const handlerSubmit = async (e) => {
+   e.preventDefault()
+   setSearchValue('')
+   router.push({pathname: '/buscar',
+                 query:  {searchValue} }
               )
-       
     }
 
   return (
