@@ -1,4 +1,5 @@
 
+import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react'
 
 import { SearchList } from '@/components/search/SearchList'
@@ -8,11 +9,11 @@ import VisualCard from "../components/VisualCard";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 
-export default function Buscar(props) {
+export default function Buscar() {
 
-  const { searchValue } = props
-
-
+  const router = useRouter()
+  const searchValue = router.query.searchValue
+  //const { searchValue } = props
   const [movies, setMovies] = useState([]);
 
 useEffect(() => {
@@ -20,7 +21,7 @@ useEffect(() => {
   .then( movies => setMovies(movies))
   console.log(movies)
 },
-[]);
+[searchValue]);
 
   return (
     <>

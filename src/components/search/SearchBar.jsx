@@ -1,16 +1,13 @@
 
 
-import { useState, useEffect } from "react";
-import {getMovieByName} from './getMovieByName'
+import { useState } from "react";
+import { useRouter } from 'next/router'
+
 
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import { SearchList } from './SearchList';
-
-
-import { useRouter } from 'next/router'
 
 export default function SearchBar(props) {
 
@@ -19,15 +16,15 @@ export default function SearchBar(props) {
   const router = useRouter()
 
 
+  const handlerSubmit = async (e) => {
+  e.preventDefault()
+  setSearchValue('')
+    // router.push( `buscar/?search=${searchValue}`)
 
-    const handlerSubmit = async (e) => {
-      e.preventDefault()
-      // router.push( `buscar/?search=${searchValue}`)
-        // getMovieByName(searchValue)
-        //   .then( movies => setMovies(movies))
-        //   console.log(movies)
-        router.push("/buscar")
-    }
+   router.push({ pathname:"/buscar",
+                 query: {searchValue}
+   })
+  }
 
   return (
     <>
@@ -39,7 +36,7 @@ export default function SearchBar(props) {
       aria-label="Search"
       value={searchValue}
      // onChange = {handlerOnChance}
-      onChange={(e) => setSearchValue(e.target.value)}
+      onChange={(e) => setSearchValue(e.currentTarget.value.trim())}
     />
 
     {/* <Button variant="outline-secondary">Search</Button> */}
