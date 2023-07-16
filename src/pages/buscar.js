@@ -29,9 +29,9 @@ const filteredMovies = movies.filter(movie => movie.poster_path !==null)
     <>
       <h1 className='m-0 p-2 text-center text-white bg-dark'>Buscar película por nombre</h1>
       <main className='container-fluid  movies__container justify-center'>
-        {/* <SearchList movies={movies} /> */}
-         {filteredMovies?.length === 0 && <h3 className='text-light'> Pelicula no encontrada </h3> }
-        { filteredMovies?.map(movie => (
+        <SearchList movies={filteredMovies} />
+        {/* { filteredMovies?.length === 0 && <h3 className='text-light'> Película no encontrada </h3> } */}
+        {/* { filteredMovies?.map(movie => (
           <VisualCard key={movie.id} {...movie}></VisualCard>
 
           // <div className="card-body text-white text-center p-4" key={movie.id}>
@@ -41,7 +41,7 @@ const filteredMovies = movies.filter(movie => movie.poster_path !==null)
           //       className="card-img-top poster__movie"/>
           // </div>
         ))
-      }
+      } */}
       </main>
     </>
   )
