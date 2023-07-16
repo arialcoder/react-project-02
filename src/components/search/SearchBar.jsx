@@ -19,6 +19,7 @@ export default function SearchBar(props) {
   const handlerSubmit = async (e) => {
   e.preventDefault()
   setSearchValue('')
+
     // router.push( `buscar/?search=${searchValue}`)
 
    router.push({ pathname:"/buscar",
@@ -35,8 +36,9 @@ export default function SearchBar(props) {
       className="me-2"
       aria-label="Search"
       value={searchValue}
+      maxLength={30}
      // onChange = {handlerOnChance}
-      onChange={(e) => setSearchValue(e.currentTarget.value.trim())}
+      onChange={(e) => setSearchValue(e.currentTarget.value)}
     />
 
     {/* <Button variant="outline-secondary">Search</Button> */}
