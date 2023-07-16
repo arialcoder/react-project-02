@@ -1,9 +1,15 @@
 import { ButtonGroup, Button } from "react-bootstrap";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
+import Tooltip from 'react-bootstrap/Tooltip'
 
 const VisualCard = (params) => {
     const API_IMG = "https://image.tmdb.org/t/p/w500";
 
+
+    const renderTooltip = text => (
+        <Tooltip>{text}</Tooltip>
+      )
     return (
         <div className="visual-card">
         <div className="card-body text-white text-center p-4">
@@ -20,7 +26,9 @@ const VisualCard = (params) => {
                     <ButtonGroup size="lg">
                         <Button variant="dark" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top"><i class="bi bi-play-circle"></i></Button>
                         <Button variant="dark"> <i class="bi bi-plus-circle"></i></Button>
-                        <Button variant="dark"><i class="bi bi-info-circle"></i></Button>
+                        <OverlayTrigger placement='top' delay={{ show: 250, hide: 400 }} overlay={renderTooltip(params?.overview)}>
+                            <Button variant="dark"><i class="bi bi-info-circle"></i></Button>
+                        </OverlayTrigger>
                     </ButtonGroup>
                 </div>
             </div>
